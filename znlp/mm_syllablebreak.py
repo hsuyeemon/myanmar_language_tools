@@ -25,11 +25,11 @@ def is_valid_syllablebreak(input_string=None, index=0):
         ## disable matching incomplete myanmar words
         ## the regex is checking if the first word is part of the previous syllable
         ## it was part of previous syllable if a consonant is followed by various signs
-        if re.match(ur"^[\u1000-\u1021][\u1037\u1039\u103A]+", segmented_string):
+        if re.match(u"^[\u1000-\u1021][\u1037\u1039\u103A]+", segmented_string):
             is_valid_syllablebreak = False
 
         ## checking if the sentence starts with dependent vowels
-        elif re.match(ur"^[\u102B-\u103E]", segmented_string):
+        elif re.match(u"^[\u102B-\u103E]", segmented_string):
             is_valid_syllablebreak = False
 
     return is_valid_syllablebreak

@@ -85,7 +85,7 @@ class Segmenter():
 
         ## remove spaces between myanmar words
         ## use positive lookahead to matches \s that is followed by a [\u1000-\u104F], without making the [\u1000-\u104F] part of the match
-        input_string = re.sub(ur"([\u1000-\u104F])\s+(?=[\u1000-\u104F])", r"\1", input_string)
+        input_string = re.sub(u"([\u1000-\u104F])\s+(?=[\u1000-\u104F])", r"\1", input_string)
 
         return input_string
 
@@ -124,7 +124,7 @@ class Segmenter():
 
                         ## also need to check previous string for VIRAMA Killer
                         previous_string = input_string[match_start_position-1:]
-                        if re.search(ur"^\u1039", previous_string):
+                        if re.search(u"^\u1039", previous_string):
                             continue
 
                         temp_string = input_string[match_start_position:]
@@ -148,10 +148,10 @@ class Segmenter():
                 if u"\uFFF0" in token:
                     ## if non \u00D2 in the string
                     ## split non \u00D2 and \u00D2
-                    if re.search(ur"[^\uFFF0]", token):
+                    if re.search(u"[^\uFFF0]", token):
                         ## add space between non \ufff0 and \ufff0
-                        token = re.sub(ur"([^\uFFF0])(\uFFF0)", ur"\1 \2", token)
-                        token = re.sub(ur"(\uFFF0)([^\uFFF0])", ur"\1 \2", token)
+                        token = re.sub(u"([^\uFFF0])(\uFFF0)", u"\1 \2", token)
+                        token = re.sub(u"(\uFFF0)([^\uFFF0])", u"\1 \2", token)
 
                         inside_tokens = mm_tokenizer.get_tokens(input_string=token)
 

@@ -62,7 +62,7 @@ class KeywordExtractor():
         cleaned_words = []
         for word in segmented_words:
             ## remove non-myanmar words and remove myanmar digits words
-            if re.search(ur"[\u1000-\u104F]", word) and re.search(ur"[^\u1040-\u1049]", word):
+            if re.search(u"[\u1000-\u104F]", word) and re.search(u"[^\u1040-\u1049]", word):
                 if not word in self.stopwords_dict:
                     cleaned_words.append(word)
 
